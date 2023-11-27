@@ -4,14 +4,17 @@
 using namespace std;
 int main()                                                                                                         //menu chon chuc nang
 {
+    system("cls");
     int n, m;                                                                                                      //n la chuc nang chinh, m la chuc nang phu
-    int a = -1;                                                                                                    //a la so hang (so luong doc gia), b la so cot (so luong chua cai) cua danh sach doc gia
+    int a = -1;                                                                                                    //a la so hang (so luong doc gia), -1 co nghia la khong co doc gia
     char tenDocGia[100][100];
-    cout << "Chao mung ban den voi thu vien truong Dai hoc Khoa hoc tu nhien TP.HCM" << endl << endl;
+    char soCMND[100][12];
     do
     {
+        cout << "Chao mung ban den voi thu vien truong Dai hoc Khoa hoc tu nhien TP.HCM" << endl << endl;
         menuChinh();
         cin >> n;
+        system("cls");
         switch(n)
         {
             case 1:
@@ -20,10 +23,16 @@ int main()                                                                      
                 switch(m)
                 {
                     case 1:
-                        danhSachDocGia(tenDocGia);
+                        danhSachDocGia(a, tenDocGia, soCMND);
                         break;
                     case 2:
-                        themDocGia(a, tenDocGia);
+                        themDocGia(a, tenDocGia, soCMND);
+                        break;
+                    case 3:
+                        chinhSuaThongTinDocGia(a, tenDocGia);
+                        break;
+                    case 4:
+                        xoaThongTinMotDocGia(a, tenDocGia);
                         break;
                     default:
                         cout << endl << "Khong the chay chuong trinh, tu dong quay lai!" << endl << endl;

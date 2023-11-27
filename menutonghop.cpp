@@ -12,6 +12,7 @@ void menuChinh()
 }
 void menuDocGia()
 {
+    cout << "---Quan Li Doc Gia---" << endl;
     cout << endl << "1. Xem danh sach doc gia trong thu vien" << endl;
     cout << "2. Them doc gia" << endl;
     cout << "3. Chinh sua thong tin mot doc gia" << endl;
@@ -22,6 +23,7 @@ void menuDocGia()
 }
 void menuSach()
 {
+    cout << "---Quan Li Sach---" << endl;
     cout << endl << "1. Xem danh sach cac sach trong thu vien" << endl;
     cout << "2. Them sach" << endl;
     cout << "3. Chinh sua thong tin mot quyen sach" << endl;
@@ -32,6 +34,7 @@ void menuSach()
 }
 void menuThongKe()
 {
+    cout << "---Thong Ke Co Ban---" << endl;
     cout << endl << "1. Thong ke so luong sach trong thu vien" << endl;
     cout << "2. Thong ke so luong sach theo the loai" << endl;
     cout << "3. Thong ke so luong doc gia" << endl;

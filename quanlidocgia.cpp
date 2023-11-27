@@ -1,23 +1,56 @@
 #include "quanlidocgia.h"
 using namespace std;
-void danhSachDocGia(char tenDocGia[100][100])
+void danhSachDocGia(int& a, char tenDocGia[100][100], char soCMND[100][12])
 {
-    cout << endl << "Danh sach doc gia hien tai: " << endl << endl;
-    for(int i = 0; tenDocGia[i][0] = '\0'; i++)
+    system("cls");
+    cout << endl << "Danh sach doc gia hien tai (STT - Ho va Ten - CMND): " << endl << endl;
+    for(int i = 0; i <= a; i++)
     {
-        for(int j = 0; tenDocGia[i][j] = '\n'; j++)
-        {
-            cout << tenDocGia[i][j];
-        }
-        cout << endl;
+        cout << i << " - " << tenDocGia[i] << " - " << soCMND[i] << endl;
+    }
+    cout << endl << "Quay lai menu..." << endl << endl;
+}
+void themDocGia(int& a, char tenDocGia[100][100], char soCMND[100][12])
+{
+    a += 1;
+    cout << endl << "Nhap ten doc gia moi (doc gia " << a << "): ";
+    cin.ignore();
+    cin.getline(tenDocGia[a], 100);
+    do
+    {
+        cout << endl << "Nhap CMND cua doc gia " << a << ": ";
+        cin.get(soCMND[a], 100);
+    }
+    while(strlen(soCMND[a]) != 12);
+    cout << endl << "Thanh cong! Quay lai menu... " << endl << endl;
+}
+void chinhSuaThongTinDocGia(int& a, char tenDocGia[100][100])
+{
+    bool khongDocGia = false;
+    if(a < 0) khongDocGia = true;                                                                                   //De kiem tra neu khong co doc gia thi thoat ra menu
+    if(khongDocGia) cout << endl << "Khong co doc gia de chinh sua ten! Quay lai menu..." << endl << endl;
+    else
+    {
+        cout << endl << "Nhap so thu tu doc gia de chinh sua ten (bat dau tu 0): ";
+        int i;
+        cin >> i;
+        cout << endl <<"Nhap ten moi cua doc gia " << i << ": ";
+        cin.ignore();
+        cin.getline(tenDocGia[i], 100);
+        cout << endl << "Thanh cong! Quay lai menu... " << endl << endl;
     }
 }
-void themDocGia(int& a, char tenDocGia[100][100])
+void xoaThongTinMotDocGia(int& a, char tenDocGia[100][100])
 {
-    a += 1;                                                                 //a la so hang = so luong doc gia
-    int i = 0;                                                              //i la so cot = so luong chu cai
-    char b[100];
-    cout << endl << "Nhap ten doc gia moi: ";
-    cin.getline(b, 100);
-    cout << b << endl << endl;
+    bool khongDocGia = false;
+    if(a < 0) khongDocGia = true;                                                                                   //De kiem tra neu khong co doc gia thi thoat ra menu
+    if(khongDocGia) cout << endl << "Khong co doc gia de xoa! Quay lai menu..." << endl << endl;
+    else
+    {
+        cout << endl << "Nhap so thu tu doc gia de xoa (bat dau tu 0): ";
+        int i;
+        cin >> i;
+        strcpy(tenDocGia[i], " ");
+        cout << endl << "Thanh cong! Quay lai menu... " << endl << endl;
+    }
 }
