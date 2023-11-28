@@ -2,16 +2,15 @@
 #include "menu.h"
 #include <string.h>
 using namespace std;
-int main()                                                                                                         //menu chon chuc nang
+int main()                                                                                                                      //menu chon chuc nang
 {
     system("cls");
-    int n, m;                                                                                                      //n la chuc nang chinh, m la chuc nang phu
-    int a = -1;                                                                                                    //a la so hang (so luong doc gia), -1 co nghia la khong co doc gia
-    char tenDocGia[100][100];
-    char soCMND[100][12];
+    int n, m;                                                                                                                   //n la chuc nang chinh, m la chuc nang phu
+    int a = -1;                                                                                                                 //a la so luong doc gia (ma doc gia), -1 co nghia la khong co doc gia
+    cout << "Chao mung ban den voi thu vien truong Dai hoc Khoa hoc tu nhien TP.HCM" << endl << endl;
+    char tenDocGia[100][100], soCMND[100][21], gioiTinh[100][10], ngayThangNamSinh[100][20], address[100][100], email[100][50];
     do
     {
-        cout << "Chao mung ban den voi thu vien truong Dai hoc Khoa hoc tu nhien TP.HCM" << endl << endl;
         menuChinh();
         cin >> n;
         system("cls");
@@ -23,16 +22,19 @@ int main()                                                                      
                 switch(m)
                 {
                     case 1:
-                        danhSachDocGia(a, tenDocGia, soCMND);
+                        danhSachDocGia(a, tenDocGia, soCMND, gioiTinh, ngayThangNamSinh, address, email);
                         break;
                     case 2:
-                        themDocGia(a, tenDocGia, soCMND);
+                        themDocGia(a, tenDocGia, soCMND, gioiTinh, ngayThangNamSinh, address, email);
                         break;
                     case 3:
-                        chinhSuaThongTinDocGia(a, tenDocGia);
+                        chinhSuaThongTinDocGia(a, tenDocGia, soCMND, gioiTinh, ngayThangNamSinh, address, email);
                         break;
                     case 4:
-                        xoaThongTinMotDocGia(a, tenDocGia);
+                        xoaThongTinMotDocGia(a, tenDocGia, soCMND, gioiTinh, ngayThangNamSinh, address, email);
+                        break;
+                    case 5:
+                        timDocGiaBangCMND(a, tenDocGia, soCMND);
                         break;
                     default:
                         cout << endl << "Khong the chay chuong trinh, tu dong quay lai!" << endl << endl;
