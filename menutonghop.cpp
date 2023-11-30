@@ -1,5 +1,4 @@
-#include <iostream>
-using namespace std;
+#include "quanli.h"
 void menuChinh()
 {
     cout << "I. Quan li doc gia" << endl;
