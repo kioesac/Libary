@@ -11,7 +11,7 @@ void danhSachDocGia(int& a, char tenDocGia[100][30], char soCMND[100][15], char 
         cout << "Ma doc gia -- Ho va Ten -- CMND -- Gioi tinh -- Ngay thang nam sinh -- Dia chi -- Email" << endl << endl;
         for(int i = 0; i <= a; i++)
         {
-            cout << i << " -- " << tenDocGia[i] << " -- " << soCMND[i] << " -- " << gioiTinh[i] << " -- " << ngayThangNamSinh[a] << " -- " << address[a] << " -- " << email[a] << endl;
+            cout << i << " -- " << tenDocGia[i] << " -- " << soCMND[i] << " -- " << gioiTinh[i] << " -- " << ngayThangNamSinh[i] << " -- " << address[i] << " -- " << email[i] << endl;
         }
         cout << endl;
         system("pause");

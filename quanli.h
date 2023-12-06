@@ -21,3 +21,9 @@ void xoaThongTinSach(int& b, char tenSach[100][50], char tacGia[100][30], char m
 void timSachBangISBN(int& b, char tenSach[100][50], char maSach[100][20]);
 void timSachTheoTenSach(int& b, char tenSach[100][50], char tacGia[100][30], char maSach[100][20], char nhaXuatBan[100][20], char namXuatBan[100][5], char theLoai[100][20], char giaSach[100][20], char soQuyenSach[100][100]);
 
+//Muon va tra sach:
+
+void phieuMuonSach(int a, int b, char tenDocGia[100][30], char sachDangMuon[100][50], char tenSach[100][50],char ngayMuonSach[100][15], char ngayTraSach[100][15]);
+void phieuTraSach(int a, int b, char tenDocGia[100][30], char maSach[100][20], char giaSach[100][20], char sachDangMuon[100][50], char tenSach[100][50], char ngayMuonSach[100][15], char ngayTraSach[100][15], char ngayTraSachThucTe[100][15]);
+
+
