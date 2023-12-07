@@ -1,4 +1,5 @@
 #include "quanli.h"
+#include "math.h"
 void phieuMuonSach(int a, int b, char tenDocGia[100][30], char sachDangMuon[100][50], char tenSach[100][50], char ngayMuonSach[100][15], char ngayTraSach[100][15])
 {
     system("cls");
@@ -52,7 +53,7 @@ void phieuMuonSach(int a, int b, char tenDocGia[100][30], char sachDangMuon[100]
     }
     else cout << endl << "Khong co doc gia hoac sach do! Quay lai menu..." << endl << endl; 
 }
-void phieuTraSach(int a, int b, char tenDocGia[100][30], char maSach[100][20], char giaSach[100][20], char sachDangMuon[100][50], char tenSach[100][50], char ngayMuonSach[100][15], char ngayTraSach[100][15], char ngayTraSachThucTe[100][15])
+void phieuTraSach(int a, int b, int monthDays[12], char tenDocGia[100][30], char maSach[100][20], char giaSach[100][20], char sachDangMuon[100][50], char tenSach[100][50], char ngayMuonSach[100][15], char ngayTraSach[100][15], char ngayTraSachThucTe[100][15])
 {
     system("cls");
     char ten[30];
@@ -86,16 +87,26 @@ void phieuTraSach(int a, int b, char tenDocGia[100][30], char maSach[100][20], c
         if(ngayTraSachThucTe[maDocGia][0] == '0')
         {
             int tienPhat = 0;
-            for(int i = 0; giaSach[maDocGia][i] != '\0'; i++) tienPhat = tienPhat * 10 + (int)giaSach[maDocGia][i] - 48;
+            tienPhat = bookPrice(maDocGia, giaSach);
             cout << endl << "Tien phat mat sach: " << tienPhat * 2 << endl;
+            system("pause");
+            system("cls");
         }
-        system("pause");
-        system("cls");
+        else
+        {
+            int day1 = totalDays(maDocGia, ngayTraSachThucTe, monthDays);
+            int day2 = totalDays(maDocGia, ngayTraSach, monthDays);
+            int soNgayTre = day1 - day2;
+            cout << endl << "Tien phat tre han: " << 5000 * soNgayTre << endl;
+            system("pause");
+            system("cls");
+        }
     }
     else 
     {
-        cout << "Khong co du lieu doc gia muon sach! Quay lai menu" << endl << endl;
+        cout << "Khong co du lieu doc gia muon sach!" << endl;
         system("pause");
         system("cls");
+        cout << "Quay lai menu..." << endl << endl;
     }
 }

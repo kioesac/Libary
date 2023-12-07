@@ -7,7 +7,7 @@ int main()                                                                      
     int a = -1;                                                                                                                 //a la so luong doc gia (ma doc gia), -1 co nghia la khong co doc gia
     int b = -1;                                                                                                                 //b la so loai sach, -1 co nghia la khong co sach
     cout << "Chao mung ban den voi thu vien truong Dai hoc Khoa hoc tu nhien TP.HCM" << endl << endl;
-    char tenDocGia[100][30], soCMND[100][15], gioiTinh[100][5], ngayThangNamSinh[100][15], address[100][50], email[100][30];
+    char tenDocGia[100][30], soCMND[100][15], gioiTinh[100][5], ngayThangNamSinh[100][15], address[100][50], email[100][30], ngayLapThe[100][15], ngayHetHanThe[100][15];
     char tenSach[100][50], tacGia[100][30], maSach[100][20], nhaXuatBan[100][20], namXuatBan[100][5], theLoai[100][20], giaSach[100][20], soQuyenSach[100][100];
     char sachDangMuon[100][50], ngayMuonSach[100][15], ngayTraSach[100][15], ngayTraSachThucTe[100][15];
     int monthDays[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -24,16 +24,16 @@ int main()                                                                      
                 switch(m)
                 {
                     case 1:
-                        danhSachDocGia(a, tenDocGia, soCMND, gioiTinh, ngayThangNamSinh, address, email);
+                        danhSachDocGia(a, tenDocGia, soCMND, gioiTinh, ngayThangNamSinh, address, email, ngayLapThe, ngayHetHanThe);
                         break;
                     case 2:
-                        themDocGia(a, tenDocGia, soCMND, gioiTinh, ngayThangNamSinh, address, email);
+                        themDocGia(a, tenDocGia, soCMND, gioiTinh, ngayThangNamSinh, address, email, ngayLapThe, ngayHetHanThe);
                         break;
                     case 3:
-                        chinhSuaThongTinDocGia(a, tenDocGia, soCMND, gioiTinh, ngayThangNamSinh, address, email);
+                        chinhSuaThongTinDocGia(a, tenDocGia, soCMND, gioiTinh, ngayThangNamSinh, address, email, ngayLapThe, ngayHetHanThe);
                         break;
                     case 4:
-                        xoaThongTinMotDocGia(a, tenDocGia, soCMND, gioiTinh, ngayThangNamSinh, address, email);
+                        xoaThongTinMotDocGia(a, tenDocGia, soCMND, gioiTinh, ngayThangNamSinh, address, email, ngayLapThe, ngayHetHanThe);
                         break;
                     case 5:
                         timDocGiaBangCMND(a, tenDocGia, soCMND);
@@ -75,13 +75,15 @@ int main()                                                                      
                 phieuMuonSach(a, b, tenDocGia, sachDangMuon, tenSach, ngayMuonSach, ngayTraSach);
                 break;
             case 4:
-                phieuTraSach(a, b, tenDocGia, maSach, giaSach, sachDangMuon, tenSach, ngayMuonSach, ngayTraSach, ngayTraSachThucTe);
+                phieuTraSach(a, b, monthDays, tenDocGia, maSach, giaSach, sachDangMuon, tenSach, ngayMuonSach, ngayTraSach, ngayTraSachThucTe);
                 break;
             case 5:
                 menuThongKe();
                 cin >> m;
                 switch(m)
                 {
+                    case 1:
+                        break;
                     default:
                         cout << endl << "Khong the chay chuong trinh, tu dong quay lai!" << endl << endl;
                     break;

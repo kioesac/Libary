@@ -1,5 +1,5 @@
 #include "quanli.h"
-void danhSachDocGia(int& a, char tenDocGia[100][30], char soCMND[100][15], char gioiTinh[100][5], char ngayThangNamSinh[100][15], char address[100][50], char email[100][30])
+void danhSachDocGia(int& a, char tenDocGia[100][30], char soCMND[100][15], char gioiTinh[100][5], char ngayThangNamSinh[100][15], char address[100][50], char email[100][30], char ngayLapThe[100][15], char ngayHetHanThe[100][15])
 {
     system("cls");
     bool khongDocGia = false;
@@ -8,10 +8,10 @@ void danhSachDocGia(int& a, char tenDocGia[100][30], char soCMND[100][15], char 
     else
     {
         cout << "--------------Danh sach doc gia hien tai--------------" << endl;
-        cout << "Ma doc gia -- Ho va Ten -- CMND -- Gioi tinh -- Ngay thang nam sinh -- Dia chi -- Email" << endl << endl;
+        cout << "Ma doc gia -- Ho va Ten -- CMND -- Gioi tinh -- Ngay thang nam sinh -- Dia chi -- Email -- ngay lap the - ngay het han the" << endl << endl;
         for(int i = 0; i <= a; i++)
         {
-            cout << i << " -- " << tenDocGia[i] << " -- " << soCMND[i] << " -- " << gioiTinh[i] << " -- " << ngayThangNamSinh[i] << " -- " << address[i] << " -- " << email[i] << endl;
+            cout << i << " -- " << tenDocGia[i] << " -- " << soCMND[i] << " -- " << gioiTinh[i] << " -- " << ngayThangNamSinh[i] << " -- " << address[i] << " -- " << email[i] << " -- " << ngayLapThe[i] << " - " << ngayHetHanThe[i] << endl;
         }
         cout << endl;
         system("pause");
@@ -20,7 +20,7 @@ void danhSachDocGia(int& a, char tenDocGia[100][30], char soCMND[100][15], char 
 }
 
 
-void themDocGia(int& a, char tenDocGia[100][30], char soCMND[100][15], char gioiTinh[100][5], char ngayThangNamSinh[100][15], char address[100][50], char email[100][30])
+void themDocGia(int& a, char tenDocGia[100][30], char soCMND[100][15], char gioiTinh[100][5], char ngayThangNamSinh[100][15], char address[100][50], char email[100][30], char ngayLapThe[100][15], char ngayHetHanThe[100][15])
 {
     a += 1;
     system("cls");
@@ -46,12 +46,23 @@ void themDocGia(int& a, char tenDocGia[100][30], char soCMND[100][15], char gioi
     cin.getline(address[a], 50);
     cout << endl << "Nhap email cua doc gia: ";                                                                                                 //email cua doc gia
     cin.getline(email[a], 30);
+    cout << endl << "Nhap ngay lap the doc gia theo cu phap dd/mm/yyyy: ";                                                                                                 //email cua doc gia
+    cin.getline(ngayLapThe[a], 15);
+    strcpy(ngayHetHanThe[a], ngayLapThe[a]);
+    int kq = 0;
+    for(int i = 0; ngayHetHanThe[a][i] != '\0'; i++)    kq = kq * 10 + ((int)ngayHetHanThe[a][i] - 48);
+    kq += 2;
+    for(int i = 9; i > 5; i--)
+    {
+        ngayHetHanThe[a][i] = (char)(kq % 10) + 48;
+        kq /= 10;
+    }
     system("cls");
     cout << endl << "Thanh cong! Quay lai menu... " << endl << endl;
 }
 
 
-void chinhSuaThongTinDocGia(int& a, char tenDocGia[100][30], char soCMND[100][15], char gioiTinh[100][5], char ngayThangNamSinh[100][15], char address[100][50], char email[100][30])
+void chinhSuaThongTinDocGia(int& a, char tenDocGia[100][30], char soCMND[100][15], char gioiTinh[100][5], char ngayThangNamSinh[100][15], char address[100][50], char email[100][30], char ngayLapThe[100][15], char ngayHetHanThe[100][15])
 {
     system("cls");
     bool khongDocGia = false;
@@ -88,12 +99,23 @@ void chinhSuaThongTinDocGia(int& a, char tenDocGia[100][30], char soCMND[100][15
         cout << endl << "Nhap email moi cua doc gia: ";                                                                                                 //email moi cua doc gia
         cin.getline(email[i], 30);
         system("cls");
+        cout << endl << "Nhap ngay lap the moi doc gia theo cu phap dd/mm/yyyy: ";                                                                                                 //email cua doc gia
+        cin.getline(ngayLapThe[a], 15);
+        strcpy(ngayHetHanThe[a], ngayLapThe[a]);
+        int kq = 0;
+        for(int i = 0; ngayHetHanThe[a][i] != '\0'; i++)    kq = kq * 10 + ((int)ngayHetHanThe[a][i] - 48);
+        kq += 2;
+        for(int i = 9; i > 5; i--)
+        {
+            ngayHetHanThe[a][i] = (char)(kq % 10) + 48;
+            kq /= 10;
+        }
         cout << endl << "Thanh cong! Quay lai menu... " << endl << endl;
     }
 }
 
 
-void xoaThongTinMotDocGia(int& a, char tenDocGia[100][30], char soCMND[100][15], char gioiTinh[100][5], char ngayThangNamSinh[100][15], char address[100][50], char email[100][30])
+void xoaThongTinMotDocGia(int& a, char tenDocGia[100][30], char soCMND[100][15], char gioiTinh[100][5], char ngayThangNamSinh[100][15], char address[100][50], char email[100][30], char ngayLapThe[100][15], char ngayHetHanThe[100][15])
 {
     system("cls");
     bool khongDocGia = false;
@@ -115,6 +137,8 @@ void xoaThongTinMotDocGia(int& a, char tenDocGia[100][30], char soCMND[100][15],
             strcpy(ngayThangNamSinh[k], ngayThangNamSinh[k + 1]);
             strcpy(address[k], address[k + 1]);
             strcpy(email[k], email[k + 1]);
+            strcpy(ngayLapThe[k], ngayLapThe[k + 1]);
+            strcpy(ngayHetHanThe[k], ngayHetHanThe[k + 1]);
         }
         cout << endl << "Thanh cong! Vui long xem danh sach moi cua doc gia!... " << endl << endl;
     }
