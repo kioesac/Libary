@@ -1,171 +1,209 @@
 #include "quanli.h"
-void danhSachDocGia(int& a, char tenDocGia[100][30], char soCMND[100][15], char gioiTinh[100][5], char ngayThangNamSinh[100][15], char address[100][50], char email[100][30], char ngayLapThe[100][15], char ngayHetHanThe[100][15])
+void danhSachDocGia(docgia a[100], int x)
 {
     system("cls");
-    bool khongDocGia = false;
-    if(a < 0) khongDocGia = true;                                                                                   //De kiem tra neu khong co doc gia thi thoat ra menu
-    if(khongDocGia) cout << endl << "Khong co doc gia de in danh sach! Quay lai menu..." << endl << endl;
+    if(x == 0) cout << endl << "Khong co doc gia de in danh sach! "; //De kiem tra neu khong co doc gia thi thoat ra menu
     else
     {
-        cout << "--------------Danh sach doc gia hien tai--------------" << endl;
-        cout << "Ma doc gia -- Ho va Ten -- CMND -- Gioi tinh -- Ngay thang nam sinh -- Dia chi -- Email -- ngay lap the - ngay het han the" << endl << endl;
-        for(int i = 0; i <= a; i++)
+        cout << "_____________________Danh sach doc gia hien tai_____________________"                                                  << endl;
+        cout << "Ma doc gia | Ho va Ten | CMND | Gioi tinh | Ngay thang nam sinh | Dia chi | Email | Ngay lap the -> Ngay het han the"  << endl << endl;
+        for(int i = 0; i < x; i++)
         {
-            cout << i << " -- " << tenDocGia[i] << " -- " << soCMND[i] << " -- " << gioiTinh[i] << " -- " << ngayThangNamSinh[i] << " -- " << address[i] << " -- " << email[i] << " -- " << ngayLapThe[i] << " - " << ngayHetHanThe[i] << endl;
+            cout << a[i].subscriptionId << " | " << a[i].name << " | " << a[i].id << " | " << a[i].sex << " | " << a[i].birthDate << " | " << a[i].address << " | " << a[i].email << " | " << a[i].subscriptionDate << " -> " << a[i].subscriptionExpirationDate << endl;
         }
-        cout << endl;
-        system("pause");
-        cout << endl << "Quay lai menu..." << endl << endl;
+        cout << "Thanh cong! ";
     }
+    cout <<"Quay lai menu..." << endl << endl; system("pause");
 }
 
-
-void themDocGia(int& a, char tenDocGia[100][30], char soCMND[100][15], char gioiTinh[100][5], char ngayThangNamSinh[100][15], char address[100][50], char email[100][30], char ngayLapThe[100][15], char ngayHetHanThe[100][15])
+void themDocGia(docgia a[100], int& x)
 {
-    a += 1;
+    bool check2;
+    int check = 0;
     system("cls");
-    cout << "Ma doc gia: " << a;                                                                                                                //Ma doc gia
-    cout << endl << "Nhap ten doc gia moi: ";                                                                                                   //Nhap ten doc gia moi
     cin.ignore();
-    cin.getline(tenDocGia[a], 30);
+    cout << "Luu y: ma doc gia 6 chu so se duoc tao tu dong!" << endl << endl;
     do
     {
-        cout << endl << "Nhap CMND cua doc gia: ";                                                                                              //Nhap so CMND cua doc gia moi
-        cin.getline(soCMND[a], 15);
+        check2 = false;
+        a[x].subscriptionId = (rand() % 900000) + 100000;
+        for(int i = 0; i < x; i++) if(a[i].subscriptionId == a[x].subscriptionId) check2 = true;
     }
-    while(strlen(soCMND[a]) != 12);
-    cout << endl << "Gioi tinh doc gia ?(Nam hay Nu): ";                                                                                        //Gioi tinh cua doc gia doc gia moi
-    cin.getline(gioiTinh[a], 5);
+    while(check2);
+    cout << "Ma doc gia: " << a[x].subscriptionId << endl;
+    cout << "Nhap ten doc gia: ";                                                       cin.getline(a[x].name, 50);
+    cout << "Nhap CCND cua doc gia: ";                                                  cin.getline(a[x].id, 15);
+    cout << "Nhap gioi tinh cua doc gia (Nam & Nu): ";                                  cin.getline(a[x].sex, 5);
     do
     {
-        cout << endl << "Nhap ngay thang nam sinh cua doc gia theo cu phap " << "dd/mm/yyyy" << ": ";                                           //Ngay thang nam sinh cua doc gia moi
-        cin.getline(ngayThangNamSinh[a], 15);
+        cout << "Nhap Birthday cua doc gia theo cu phap dd/mm/yyyy: ";                  cin.getline(a[x].birthDate, 15); 
     }
-    while(strlen(ngayThangNamSinh[a]) != 10);
-    cout << endl << "Dia chi cua doc gia?: ";                                                                                                   //Dia chi doc gia
-    cin.getline(address[a], 50);
-    cout << endl << "Nhap email cua doc gia: ";                                                                                                 //email cua doc gia
-    cin.getline(email[a], 30);
-    cout << endl << "Nhap ngay lap the doc gia theo cu phap dd/mm/yyyy: ";                                                                                                 //email cua doc gia
-    cin.getline(ngayLapThe[a], 15);
-    strcpy(ngayHetHanThe[a], ngayLapThe[a]);
-    int kq = 0;
-    for(int i = 0; ngayHetHanThe[a][i] != '\0'; i++)    kq = kq * 10 + ((int)ngayHetHanThe[a][i] - 48);
-    kq += 2;
-    for(int i = 9; i > 5; i--)
+    while(strlen(a[x].birthDate) != 10);
+    cout << "Nhap dia chi cua doc gia: ";                                               cin.getline(a[x].address, 100);
+    cout << "Nhap email cua doc gia: ";                                                 cin.getline(a[x].email, 50);
+    do
     {
-        ngayHetHanThe[a][i] = (char)(kq % 10) + 48;
-        kq /= 10;
+        cout << "Nhap ngay lap the thanh vien cua doc gia theo cu phap dd/mm/yyyy: ";   cin.getline(a[x].subscriptionDate, 15); 
     }
-    system("cls");
-    cout << endl << "Thanh cong! Quay lai menu... " << endl << endl;
+    while(strlen(a[x].subscriptionDate) != 10);
+    for(int i = 6; i <= 9; i++) check = check * 10 + (int)a[x].subscriptionDate[i] - 48;
+    check += 2;
+    strcpy(a[x].subscriptionExpirationDate, a[x].subscriptionDate);
+    for(int i = 9; i >= 6; i--)
+    {
+        a[x].subscriptionExpirationDate[i] = (char)(check % 10) + 48;
+        check /= 10;
+    }
+    x += 1;
+    cout <<"Thanh cong! Quay lai menu..." << endl << endl; system("pause");
 }
 
-
-void chinhSuaThongTinDocGia(int& a, char tenDocGia[100][30], char soCMND[100][15], char gioiTinh[100][5], char ngayThangNamSinh[100][15], char address[100][50], char email[100][30], char ngayLapThe[100][15], char ngayHetHanThe[100][15])
+void chinhSuaDocGia(docgia a[100], int x)
 {
     system("cls");
-    bool khongDocGia = false;
-    if(a < 0) khongDocGia = true;                                                                                                                       //De kiem tra neu khong co doc gia thi thoat ra menu
-    if(khongDocGia) cout << endl << "Khong co doc gia de chinh sua ten! Quay lai menu..." << endl << endl;
+    if(x == 0) cout << endl << "Khong co doc gia de chinh sua! "; //De kiem tra neu khong co doc gia thi thoat ra menu
     else
     {
-        int i;
+        int check = 0;
+        int check2;
         do
         {
-        cout << endl << "Nhap ma doc gia de chinh sua ten (tu 0 -> " << a << "): ";                                                                     //Chinh sua ten doc gia can sua
-        cin >> i;
+            cout << "Nhap ma doc gia de chinh sua thong tin doc gia do: ";  cin >> check2;
         }
-        while(i > a || i < 0);
-        cout << endl <<"Nhap ten moi cua doc gia: ";
+        while(check2 / 100000 <= 0 || check2 / 100000 >= 10);
+        for(int i = 0; i < x; i++)
+        {
+            if(a[i].subscriptionId == check2)
+            {
+                cin.ignore();
+                cout << "Ma doc gia: " << a[i].subscriptionId << endl;
+                cout << "Nhap ten doc gia: ";                                                           cin.getline(a[i].name, 50);
+                cout << "Nhap CCND cua doc gia: ";                                                      cin.getline(a[i].id, 15);
+                cout << "Nhap gioi tinh cua doc gia (Nam & Nu): ";                                      cin.getline(a[i].sex, 5);
+                do
+                {
+                    cout << "Nhap Birthday cua doc gia theo cu phap dd/mm/yyyy: ";                      cin.getline(a[i].birthDate, 15);
+                }
+                while(strlen(a[i].birthDate) != 10);
+                cout << "Nhap dia chi cua doc gia: ";                                                   cin.getline(a[i].address, 100);
+                cout << "Nhap email cua doc gia: ";                                                     cin.getline(a[i].email, 50);
+                do
+                {
+                    cout << "Nhap ngay lap the thanh vien cua doc gia theo cu phap dd/mm/yyyy: ";       cin.getline(a[i].subscriptionDate, 15);
+                }
+                while(strlen(a[i].subscriptionDate) != 10);
+                for(int j = 6; j <= 9; j++) check = check * 10 + (int)a[i].subscriptionDate[j] - 48;
+                check += 2;
+                strcpy(a[i].subscriptionExpirationDate, a[i].subscriptionDate);
+                for(int j = 9; j >= 6; j--)
+                {
+                    a[i].subscriptionExpirationDate[j] = (char)(check % 10) + 48;
+                    check /= 10;
+                }
+                cout <<"Thanh cong! ";
+                break;
+            }
+            else
+            {
+                if(i == x - 1) cout << "Khong ton tai doc gia! ";
+                continue;
+            }
+        }
+    }
+    cout << "Quay lai menu..." << endl << endl; system("pause");
+}
+
+void xoaDocGia(docgia a[100], int& x)
+{
+    system("cls");
+    if(x == 0) cout << endl << "Khong co doc gia de xoa! "; //De kiem tra neu khong co doc gia thi thoat ra menu
+    else
+    {
+        int check2;
+        do
+        {
+            cout << "Nhap ma doc gia de xoa thong tin doc gia do: ";    cin >> check2;
+        }
+        while(check2 / 100000 <= 0 || check2 / 100000 >= 10);
+        for(int i = 0; i < x; i++)
+        {
+            if(a[i].subscriptionId == check2)
+            {
+                x -= 1;
+                for(int j = i; j < x; j++) a[j] = a[j + 1];
+                cout << "Thanh cong! "; 
+                break;
+            }
+            else
+            {
+                if(i == x - 1) cout << "Khong ton tai doc gia! ";
+                continue;
+            }
+        }
+    }
+    cout << "Quay lai menu..." << endl << endl; system("pause");
+}
+
+void timKiemBangCCND(docgia a[100], int x)
+{
+    system("cls");
+    if(x == 0) cout << endl << "Khong co doc gia! "; //De kiem tra neu khong co doc gia thi thoat ra menu
+    else
+    {
         cin.ignore();
-        cin.getline(tenDocGia[i], 30);
+        char check[15];
         do
         {
-            cout << endl << "Nhap CMND moi cua doc gia: ";                                                                                              //Chinh sua so CMND cua doc gia can sua
-            cin.getline(soCMND[i], 15);
+            cout << "Nhap CCND cua doc gia dang tim kiem: ";    cin.getline(check, 15);
         }
-        while(strlen(soCMND[i]) != 12);
-        cout << endl << "Gioi tinh moi doc gia ?(Nam hay Nu): ";                                                                                        //Gioi tinh moi cua doc gia doc gia moi
-        cin.getline(gioiTinh[i], 5);
-        do
+        while(strlen(check) != 12);
+        for(int i = 0; i < x; i++)
         {
-            cout << endl << "Nhap ngay thang nam sinh moi cua doc gia theo cu phap " << "dd/mm/yyyy" << ": ";                                           //Ngay thang nam sinh moi cua doc gia moi
-            cin.getline(ngayThangNamSinh[i], 15);
+            if(strcmp(a[i].id, check) == 0)
+            {
+                cout << endl;
+                cout << "---Day la thong tin cua doc gia ma ban muon tim kiem---" << endl;
+                cout << "Ma doc gia | Ho va Ten | CMND | Gioi tinh | Ngay thang nam sinh | Dia chi | Email | ngay lap the -> ngay het han the"  << endl << endl;
+                cout << a[i].subscriptionId << " | " << a[i].name << " | " << a[i].id << " | " << a[i].sex << " | " << a[i].birthDate << " | " << a[i].address << " | " << a[i].email << " | " << a[i].subscriptionDate << " -> " << a[i].subscriptionExpirationDate << endl << endl;
+                cout << "Thanh cong! ";
+                break;
+            }
+            else
+            {
+                if(i == x - 1) cout << endl << "Khong ton tai doc gia! ";
+                continue;
+            }
         }
-        while(strlen(ngayThangNamSinh[i]) != 10);
-        cout << endl << "Dia chi moi cua doc gia?: ";                                                                                                   //Dia chi moi doc gia
-        cin.getline(address[i], 50);
-        cout << endl << "Nhap email moi cua doc gia: ";                                                                                                 //email moi cua doc gia
-        cin.getline(email[i], 30);
-        system("cls");
-        cout << endl << "Nhap ngay lap the moi doc gia theo cu phap dd/mm/yyyy: ";                                                                                                 //email cua doc gia
-        cin.getline(ngayLapThe[a], 15);
-        strcpy(ngayHetHanThe[a], ngayLapThe[a]);
-        int kq = 0;
-        for(int i = 0; ngayHetHanThe[a][i] != '\0'; i++)    kq = kq * 10 + ((int)ngayHetHanThe[a][i] - 48);
-        kq += 2;
-        for(int i = 9; i > 5; i--)
-        {
-            ngayHetHanThe[a][i] = (char)(kq % 10) + 48;
-            kq /= 10;
-        }
-        cout << endl << "Thanh cong! Quay lai menu... " << endl << endl;
     }
+    cout << "Quay lai menu..." << endl << endl; system("pause");
 }
 
-
-void xoaThongTinMotDocGia(int& a, char tenDocGia[100][30], char soCMND[100][15], char gioiTinh[100][5], char ngayThangNamSinh[100][15], char address[100][50], char email[100][30], char ngayLapThe[100][15], char ngayHetHanThe[100][15])
+void timKiemBangHoTen(docgia a[100], int x)
 {
     system("cls");
-    bool khongDocGia = false;
-    if(a < 0) khongDocGia = true;                                                                                   //De kiem tra neu khong co doc gia thi thoat ra menu
-    if(khongDocGia) cout << endl << "Khong co doc gia de xoa! Quay lai menu..." << endl << endl;
+    if(x == 0) cout << endl << "Khong co doc gia! "; //De kiem tra neu khong co doc gia thi thoat ra menu
     else
     {
-        int i;
-        bool giamDocGia = true;
-        cout << endl << "Nhap ma doc gia de xoa (bat dau tu 0 -> " << a << "): ";
-        cin >> i;
-        if(i > a) giamDocGia = false;
-        if(giamDocGia) a -= 1;                                                                                                     //tru 1 vi co 1 doc gia bi xoa
-        for(int k = i; k <= a; k++)                                                                                 //day cac doc gia len (ma doc gia -1), vao cho doc gia bi xoa
+        char check[50];
+        cin.ignore();
+        cout << "Nhap CCND cua doc gia dang tim kiem: ";    cin.getline(check, 50);
+        for(int i = 0; i < x; i++)
         {
-            strcpy(tenDocGia[k], tenDocGia[k + 1]);
-            strcpy(soCMND[k], soCMND[k + 1]);
-            strcpy(gioiTinh[k], gioiTinh[k + 1]);
-            strcpy(ngayThangNamSinh[k], ngayThangNamSinh[k + 1]);
-            strcpy(address[k], address[k + 1]);
-            strcpy(email[k], email[k + 1]);
-            strcpy(ngayLapThe[k], ngayLapThe[k + 1]);
-            strcpy(ngayHetHanThe[k], ngayHetHanThe[k + 1]);
+            if(strcmp(a[i].name, check) == 0)
+            {
+                cout << endl;
+                cout << "---Day la thong tin cua doc gia ma ban muon tim kiem---" << endl;
+                cout << "Ma doc gia | Ho va Ten | CMND | Gioi tinh | Ngay thang nam sinh | Dia chi | Email | ngay lap the -> ngay het han the"  << endl << endl;
+                cout << a[i].subscriptionId << " | " << a[i].name << " | " << a[i].id << " | " << a[i].sex << " | " << a[i].birthDate << " | " << a[i].address << " | " << a[i].email << " | " << a[i].subscriptionDate << " -> " << a[i].subscriptionExpirationDate << endl << endl;
+                cout << "Thanh cong! ";
+                break;
+            }
+            else
+            {
+                if(i == x - 1) cout << endl << "Khong ton tai doc gia! ";
+                continue;
+            }
         }
-        cout << endl << "Thanh cong! Vui long xem danh sach moi cua doc gia!... " << endl << endl;
     }
-}
-
-
-void timDocGiaBangCMND(int& a, char tenDocGia[100][30], char soCMND[100][15])
-{
-    system("cls");
-    char timCMND[15];
-    cin.ignore();
-    do
-    {
-        cout << endl << "Nhap CMND cua doc gia can tim: ";
-        cin.getline(timCMND, 15);
-    }
-    while(strlen(timCMND) != 12);
-    for(int i = 0; i <= a; i++)
-    {
-        if(strcmp(timCMND, soCMND[i]) == 0)
-        {
-            cout << endl << "Ten doc gia can tim: " << tenDocGia[i] << endl;
-            break;
-        }
-        else if(i == a) cout << "Khong tim thay doc gia!" << endl;
-    }
-    cout << endl;
-    system("pause");
-    cout << "Quay lai menu... " << endl << endl;
+    cout << "Quay lai menu..." << endl << endl; system("pause");
 }
