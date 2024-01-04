@@ -94,6 +94,8 @@ void createTicket(docgia a[100], sach b[100], borrowticket c[100], int x, int y,
             }
         }
     }
+    lamMoiFileSach(b, y);
+    lamMoiFileMuonTra(c, z);
     cout << "Quay ve menu..." << endl << endl; system("pause");
 }
 
@@ -142,6 +144,7 @@ void returnTicket(sach b[100], borrowticket c[100], int y, int z, int monthDays[
             if(kq != 0) c[i].lateReturn = true;
             c[i].tienPhat = 5000 * kq;
             cout << "Doc gia co mat sach hay khong ? (nhap 0 neu mat sach, 1 neu khong mat) ";     cin.getline(check, 5);
+            if(check[0] == '0') c[i].matSach = true;
             for(int j = 0; strlen(c[i].bookName[j]) != 0; j++)
             {
                 for(int k = 0; k < y; k++)
@@ -173,5 +176,7 @@ void returnTicket(sach b[100], borrowticket c[100], int y, int z, int monthDays[
         }
         else if(c[i].done) cout << "Doc gia nay da tra sach! ";
     }
+    lamMoiFileSach(b, y);
+    lamMoiFileMuonTra(c, z);
     cout << "Quay lai menu..." << endl << endl; system("pause");
 }

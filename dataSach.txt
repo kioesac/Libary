@@ -1,2 +1,4 @@
-111|Danh Van Cap 1|Mr.S|Canh Dieu|2010|Giao duc|56000|1
-222|To Mau|Mr.A|Kim Dong|2008|Giao duc|20000|2
+111|Dua Vui Ben Con Kenh|Mr.S|Canh Dieu|2010|Giao duc|56000|1
+222|Cuoc Chien Dam Mau|Mr.A|Kim Dong|2008|Giao duc|20000|0
+333|Dot Rung Van Nam|Mr.T|CGV Cinema|2009|Hai cot|300000|5
+444|Chu Nhim Xanh|Mr.P|Japan|1998|Hoat hinh|40000|9

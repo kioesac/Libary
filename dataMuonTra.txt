@@ -1,0 +1,19 @@
+Nguyen Van A
+sach muon:           Dua Vui Ben Con Kenh
+                     Cuoc Chien Dam Mau
+                     Dot Rung Van Nam
+                     Chu Nhim Xanh
+ngay muon:           12/12/2023
+ngay tra du kien:    15/12/2023
+ngay tra thuc te:    17/12/2023
+tinh trang sach:     Mat sach
+tien phat:           842000
+
+Ly Thi B
+sach muon:           Dot Rung Van Nam
+ngay muon:           09/07/2022
+ngay tra du kien:    14/07/2022
+ngay tra thuc te:    14/07/2022
+tinh trang sach:     Tot
+tien phat:           0
+

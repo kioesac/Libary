@@ -55,6 +55,7 @@ void themDocGia(docgia a[100], int& x)
         check /= 10;
     }
     x += 1;
+    lamMoiFileDocGia(a, x);
     cout <<"Thanh cong! Quay lai menu..." << endl << endl; system("pause");
 }
 
@@ -110,6 +111,7 @@ void chinhSuaDocGia(docgia a[100], int x)
             }
         }
     }
+    lamMoiFileDocGia(a, x);
     cout << "Quay lai menu..." << endl << endl; system("pause");
 }
 
@@ -141,6 +143,7 @@ void xoaDocGia(docgia a[100], int& x)
             }
         }
     }
+    lamMoiFileDocGia(a, x);
     cout << "Quay lai menu..." << endl << endl; system("pause");
 }
 

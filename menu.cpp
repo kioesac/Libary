@@ -87,6 +87,24 @@ int main()
                 cin >> m;
                 switch(m)
                 {
+                    case 1:
+                        soLuongSach(b, y);
+                        break;
+                    case 2:
+                        theLoaiSach(b, y);
+                        break;
+                    case 3:
+                        soLuongDocGia(a, x);
+                        break;
+                    case 4:
+                        soLuongDocGiaTheoGioiTinh(a, x);
+                        break;
+                    case 5:
+                        soSachDangMuon(c, z);
+                        break;
+                    case 6:
+                        docGiaTreHan(c, z);
+                        break;
                     default:
                         cout << endl << "Khong the chay chuong trinh, tu dong quay lai!" << endl << endl;
                     break;

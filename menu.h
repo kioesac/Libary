@@ -39,4 +39,5 @@ struct borrowticket
     int tienPhat = 0;
     bool lateReturn = false;
     bool done = false;
+    bool matSach = false;
 };

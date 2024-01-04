@@ -10,6 +10,10 @@ using namespace std;
 
 void nhapThongTinDocGia(docgia* a, int& x);
 void nhapThongTinSach(sach* b, int& y);
+void lamMoiFileDocGia(docgia* a, int x);
+void lamMoiFileSach(sach* b, int y);
+void lamMoiFileMuonTra(borrowticket* c, int z);
+
 
 //Thuat toan:
 
@@ -37,5 +41,17 @@ void timKiemBangTenSach(sach b[100], int y);
 
 void createTicket(docgia a[100], sach b[100], borrowticket c[100], int x, int y, int& z, int monthDays[13]);
 void returnTicket(sach b[100], borrowticket c[100], int y, int z, int monthDays[13]);
+
+//Thong Ke:
+
+void soLuongSach(sach* b, int y);
+void theLoaiSach(sach* b, int y);
+void soLuongDocGia(docgia* a, int x);
+void soLuongDocGiaTheoGioiTinh(docgia* a, int x);
+void soSachDangMuon(borrowticket* c, int z);
+void docGiaTreHan(borrowticket* c, int z);
+
+
+
 
 

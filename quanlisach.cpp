@@ -32,24 +32,44 @@ void themSach(sach b[100], int& y)
     cout << "Nhap the loai cua sach: ";                                     cin.getline(b[y].type, 50);
     cout << "Nhap gia tien cua sach va so luong quyen sach hien tai: ";     cin >> b[y].price >> b[y].quantity;
     y += 1;
+    lamMoiFileSach(b, y);
     cout <<"Thanh cong! Quay lai menu..."<< endl << endl;   system("pause");
 }
 
 void chinhSuaSach(sach b[100], int y)
 {
-    system("cls");
-    cin.ignore();
-    cout << "Nhap ten sach moi: ";                                          cin.getline(b[y].name, 50);
-    cout << "Nhap ma sach: ";                                               cin.getline(b[y].id, 20);
-    cout << "Nhap tac gia sach: ";                                          cin.getline(b[y].writer, 50);
-    cout << "Nhap nha xuat ban cua sach: ";                                 cin.getline(b[y].publisher, 50);
-    while(strlen(b[y].releaseYear) != 4)
+    if(y == 0) cout << "Khong co sach de sua thong tin! ";
+    else
     {
-        cout << "Nhap nam xuat ban theo dinh dang yyyy: ";                  cin.getline(b[y].releaseYear, 100);
+        system("cls");
+        char check[20];
+        cin.ignore();
+        cout << "Nhap ma sach cua sach can sua thing tin: ";                            cin.getline(check, 20);
+        for(int i = 0; i < y; i++)
+        {
+            if(strcmp(check, b[i].id) == 0)
+            {
+                cout << "Nhap ten sach moi: ";                                          cin.getline(b[y].name, 50);
+                cout << "Nhap ma sach: ";                                               cin.getline(b[y].id, 20);
+                cout << "Nhap tac gia sach: ";                                          cin.getline(b[y].writer, 50);
+                cout << "Nhap nha xuat ban cua sach: ";                                 cin.getline(b[y].publisher, 50);
+                do
+                {
+                    cout << "Nhap nam xuat ban theo dinh dang yyyy: ";                  cin.getline(b[y].releaseYear, 100);
+                }
+                while(strlen(b[y].releaseYear) != 4);
+                cout << "Nhap the loai cua sach: ";                                     cin.getline(b[y].type, 50);
+                cout << "Nhap gia tien cua sach va so luong quyen sach hien tai: ";     cin >> b[y].price >> b[y].quantity;
+                break;
+            }
+            else
+            {
+                if(i == y - 1) cout << "Khong ton tai sach! ";
+                continue;
+            }
+        }
     }
-    cout << "Nhap the loai cua sach: ";                                     cin.getline(b[y].type, 50);
-    cout << "Nhap gia tien cua sach va so luong quyen sach hien tai: ";     cin >> b[y].price >> b[y].quantity;
-    y += 1;
+    lamMoiFileSach(b, y);
     cout <<"Thanh cong! Quay lai menu..."<< endl << endl;   system("pause");
 }
 
@@ -78,6 +98,7 @@ void xoaSach(sach b[100], int& y)
             }
         }
     }
+    lamMoiFileSach(b, y);
     cout << "Quay lai menu..." << endl << endl;  system("pause");
 }
 
